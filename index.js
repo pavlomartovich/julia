@@ -9,6 +9,7 @@ const output = document.createElement('p');
 const submite = document.createElement('input');
 submite.type = 'button';
 submite.value = 'Draw pyramid';
+submite.id = 'btn';
 submite.onclick = () => {
     let res = '';
     const size = inpSize.value;
