@@ -1,4 +1,16 @@
 const root = document.getElementById('root');
+const inpBackColor = document.createElement('input');
+inpBackColor.type = 'color';
+inpBackColor.name = 'bgcolor';
+const backColorLabel = document.createElement('label');
+backColorLabel.setAttribute('for', 'bgcolor');
+backColorLabel.innerText = 'Choose color for background';
+const inpColorSign = document.createElement('input');
+inpColorSign.type = 'color';
+inpColorSign.name = 'sgncolor';
+const sgnColorLabel = document.createElement('label');
+sgnColorLabel.setAttribute('for', 'sgncolor');
+sgnColorLabel.innerText = 'Choose color for sign';
 const inpSign = document.createElement('input');
 inpSign.type = 'text';
 inpSign.placeholder = 'Type sign for ypour pyramid';
@@ -11,6 +23,8 @@ submite.type = 'button';
 submite.value = 'Draw pyramid';
 submite.id = 'btn';
 submite.onclick = () => {
+    document.getElementsByTagName('body')[0].style.backgroundColor = inpBackColor.value;
+    output.style.color = inpColorSign.value;
     let res = '';
     let c = 10;
     let helper;
@@ -32,6 +46,10 @@ submite.onclick = () => {
     }
     output.innerText = res;
 }
+root.appendChild(inpBackColor);
+root.appendChild(backColorLabel);
+root.appendChild(inpColorSign);
+root.appendChild(sgnColorLabel);
 root.appendChild(inpSign);
 root.appendChild(inpSize);
 root.appendChild(submite);
