@@ -12,12 +12,23 @@ submite.value = 'Draw pyramid';
 submite.id = 'btn';
 submite.onclick = () => {
     let res = '';
+    let c = 10;
+    let helper;
     const size = inpSize.value;
     for(let i = 1; i < size; i++){
-        for(let j = i; j < size; j++){
+        for(let j = i > 1 ? helper : i; j < size - c; j++){
+            if(j < 1){
+                continue;
+            }
             res += String.fromCharCode(160).repeat((size - j) * 2) +
             inpSign.value.repeat(j * 2) + '\n';
+            helper = j - 4;
         }
+        c -= c > 0 ? 1 : 0;
+    }
+    if(size > 0){
+        res += String.fromCharCode(160).repeat(size * 1.9) + inpSign.value.repeat(3) + '\n';
+        res += String.fromCharCode(160).repeat(size * 1.9) + inpSign.value.repeat(3);
     }
     output.innerText = res;
 }
