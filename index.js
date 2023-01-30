@@ -29,20 +29,26 @@ submite.onclick = () => {
     let c = 10;
     let helper;
     const size = inpSize.value;
-    for(let i = 1; i < size; i++){
-        for(let j = i > 1 ? helper : i; j < size - c; j++){
-            if(j < 1){
-                continue;
+    if(size > 13){
+        for(let i = 1; i < size; i++){
+            for(let j = i > 1 ? helper : i; j < size - c; j++){
+                if(j < 1){
+                    continue;
+                }
+                res += String.fromCharCode(160).repeat((size - j) * 2) +
+                inpSign.value.repeat(j * 2) + '\n';
+                helper = j - 4;
             }
-            res += String.fromCharCode(160).repeat((size - j) * 2) +
-            inpSign.value.repeat(j * 2) + '\n';
-            helper = j - 4;
+            c -= c > 0 ? 1 : 0;
         }
-        c -= c > 0 ? 1 : 0;
-    }
-    if(size > 0){
         res += String.fromCharCode(160).repeat(size * 1.9) + inpSign.value.repeat(3) + '\n';
         res += String.fromCharCode(160).repeat(size * 1.9) + inpSign.value.repeat(3);
+    } else {
+        for(let i = 1; i < size; i++){
+            res += String.fromCharCode(160).repeat((size - i) * 2) + inpSign.value.repeat(i * 2) + '\n';
+        }
+        res += String.fromCharCode(160).repeat(size * 1.7) + inpSign.value.repeat(3) + '\n';
+        res += String.fromCharCode(160).repeat(size * 1.7) + inpSign.value.repeat(3);
     }
     output.innerText = res;
 }
