@@ -14,8 +14,10 @@ submite.onclick = () => {
     let res = '';
     const size = inpSize.value;
     for(let i = 1; i < size; i++){
-        res += String.fromCharCode(160).repeat((size - i) * 2) + 
-        inpSign.value.repeat(i) + inpSign.value.repeat(i) + '\n';
+        for(let j = i; j < size; j++){
+            res += String.fromCharCode(160).repeat((size - j) * 2) +
+            inpSign.value.repeat(j * 2) + '\n';
+        }
     }
     output.innerText = res;
 }
